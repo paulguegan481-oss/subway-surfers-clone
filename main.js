@@ -832,7 +832,6 @@ function startRun(){
 }
 function showGameOver(why){
   $('hud').classList.add('hidden');
-  loadLeaderboard();
   const go=$('gameover'); go.classList.remove('hidden');
   $('go-sub').textContent = 'You ' + why + ' The Inspector caught up…';
   $('go-score').textContent = Math.floor(G.score).toLocaleString();
@@ -924,7 +923,6 @@ addEventListener('mouseup', e=>{
 });
 
 $('btn-save-score').onclick=saveScore;
-loadLeaderboard();
 $('btn-start').onclick=startRun;
 $('btn-restart').onclick=startRun;
 $('btn-revive').onclick=revive;
