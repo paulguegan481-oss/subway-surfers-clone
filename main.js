@@ -1,7 +1,7 @@
 // ---------- SUPABASE SCOREBOARD ----------
 // Remplace ces deux valeurs par celles de ton projet Supabase.
-const SUPABASE_URL = 'https://TON-PROJET.supabase.co';
-const SUPABASE_ANON_KEY = 'TA-CLE-PUBLIQUE-ANON';
+const SUPABASE_URL = 'https://lcvypcgnctmzvutxhbxv.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_6vxcq3r2sogTNYlCph4Ilw_wit3i3P4';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let scoreSubmittedForRun = false;
