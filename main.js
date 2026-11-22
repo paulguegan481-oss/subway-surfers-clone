@@ -19,29 +19,13 @@ async function saveScore() {
     const { error } = await supabase.from('scores').insert([{ username, score }]);
     if (error) throw error;
     scoreSubmittedForRun = true; status.textContent = 'Score enregistré !';
-    await loadLeaderboard();
+    ;
   } catch (e) {
     console.error('Supabase score save:', e);
     status.textContent = 'Échec : vérifie la configuration Supabase et les permissions de la table.';
   } finally { button.disabled = false; }
 }
 
-async function loadLeaderboard() {
-  const list = document.getElementById('leaderboard-list');
-  try {
-    const { data, error } = await supabase.from('scores').select('username,score').order('score',{ascending:false}).limit(10);
-    if (error) throw error;
-    list.replaceChildren();
-    if (!data || !data.length) { const li=document.createElement('li'); li.textContent='Aucun score pour le moment'; list.append(li); return; }
-    data.forEach(row => {
-      const li=document.createElement('li'); li.append(document.createTextNode(row.username));
-      const span=document.createElement('span'); span.textContent=Number(row.score).toLocaleString(); li.append(span); list.append(li);
-    });
-  } catch (e) {
-    console.error('Supabase leaderboard:', e);
-    list.replaceChildren(); const li=document.createElement('li'); li.textContent='Classement indisponible'; list.append(li);
-  }
-}
 
 import * as THREE from 'three';
 
